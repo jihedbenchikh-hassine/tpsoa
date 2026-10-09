@@ -1,6 +1,7 @@
 package entities;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Objects;
 
 @XmlRootElement
 public class Option {
@@ -25,59 +26,43 @@ public class Option {
     }
 
     // Getters et Setters
-    public int getCodeOption() {
-        return codeOption;
+    public int getCodeOption() { return codeOption; }
+    public void setCodeOption(int codeOption) { this.codeOption = codeOption; }
+
+    public String getLibelle() { return libelle; }
+    public void setLibelle(String libelle) { this.libelle = libelle; }
+
+    public String getDomaine() { return domaine; }
+    public void setDomaine(String domaine) { this.domaine = domaine; }
+
+    public String getResponsable() { return responsable; }
+    public void setResponsable(String responsable) { this.responsable = responsable; }
+
+    public int getCredits() { return credits; }
+    public void setCredits(int credits) { this.credits = credits; }
+
+    public int getSemestre() { return semestre; }
+    public void setSemestre(int semestre) { this.semestre = semestre; }
+
+    public int getCapacite() { return capacite; }
+    public void setCapacite(int capacite) { this.capacite = capacite; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Option option = (Option) o;
+        return codeOption == option.codeOption
+                && credits == option.credits
+                && semestre == option.semestre
+                && capacite == option.capacite
+                && Objects.equals(libelle, option.libelle)
+                && Objects.equals(domaine, option.domaine)
+                && Objects.equals(responsable, option.responsable);
     }
 
-    public void setCodeOption(int codeOption) {
-        this.codeOption = codeOption;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
-
-    public String getDomaine() {
-        return domaine;
-    }
-
-    public void setDomaine(String domaine) {
-        this.domaine = domaine;
-    }
-
-    public String getResponsable() {
-        return responsable;
-    }
-
-    public void setResponsable(String responsable) {
-        this.responsable = responsable;
-    }
-
-    public int getCredits() {
-        return credits;
-    }
-
-    public void setCredits(int credits) {
-        this.credits = credits;
-    }
-
-    public int getSemestre() {
-        return semestre;
-    }
-
-    public void setSemestre(int semestre) {
-        this.semestre = semestre;
-    }
-
-    public int getCapacite() {
-        return capacite;
-    }
-
-    public void setCapacite(int capacite) {
-        this.capacite = capacite;
+    @Override
+    public int hashCode() {
+        return Objects.hash(codeOption, libelle, domaine, responsable, credits, semestre, capacite);
     }
 }
